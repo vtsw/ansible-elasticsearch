@@ -1,0 +1,78 @@
+- hosts: master
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_heap_size: "16g"    
+    es_config:
+      cluster.name: "bigdata"
+      cluster.initial_master_nodes: "192.168.1.205"
+      discovery.seed_hosts: "192.168.1.205:9300"
+      http.host: 0.0.0.0
+      http.port: 9200
+      node.data: true
+      node.master: true
+      transport.host: 0.0.0.0
+      transport.port: 9300
+      xpack.security.http.ssl.enabled: true
+      xpack.security.http.ssl.keystore.path: http.p12
+      xpack.security.enabled: true
+      xpack.security.transport.ssl.enabled: true
+      xpack.security.transport.ssl.verification_mode: certificate
+      xpack.security.transport.ssl.client_authentication: required
+      xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+      xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+      bootstrap.memory_lock: false
+    es_plugins:
+      - plugin: ingest-attachment
+
+- hosts: data1
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_heap_size: "16g"
+    es_config:
+      cluster.name: "bigdata"
+      discovery.seed_hosts: "192.168.1.205:9300"
+      http.host: 0.0.0.0
+      http.port: 9200
+      node.data: true
+      node.master: false
+      transport.host: 0.0.0.0
+      transport.port: 9300
+      xpack.security.http.ssl.enabled: true
+      xpack.security.http.ssl.keystore.path: http.p12
+      xpack.security.enabled: true
+      xpack.security.transport.ssl.enabled: true
+      xpack.security.transport.ssl.verification_mode: certificate
+      xpack.security.transport.ssl.client_authentication: required
+      xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+      xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+      bootstrap.memory_lock: false
+    es_plugins:
+      - plugin: ingest-attachment
+
+- hosts: data2
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_heap_size: "16g"
+    es_config:
+      cluster.name: "bigdata"
+      discovery.seed_hosts: "192.168.1.205:9300"
+      http.host: 0.0.0.0
+      http.port: 9200
+      node.data: true
+      node.master: false
+      transport.host: 0.0.0.0
+      transport.port: 9300
+      xpack.security.http.ssl.enabled: true
+      xpack.security.http.ssl.keystore.path: http.p12
+      xpack.security.enabled: true
+      xpack.security.transport.ssl.enabled: true
+      xpack.security.transport.ssl.verification_mode: certificate
+      xpack.security.transport.ssl.client_authentication: required
+      xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+      xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+      bootstrap.memory_lock: false
+    es_plugins:
+      - plugin: ingest-attachment
