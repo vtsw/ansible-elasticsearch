@@ -1,0 +1,21 @@
+all:
+  hosts:
+    master:
+        ansible_ssh_port: 
+        ansible_host: 
+        ansible_user: 
+        ansible_become: yes
+        ansible_sudo_pass: 
+    data1:
+        ansible_ssh_port: 
+        ansible_host: 
+        ansible_user: 
+        ansible_become: yes
+        ansible_sudo_pass: 
+
+    data2:
+        ansible_ssh_port: 
+        ansible_host: 
+        ansible_user: 
+        ansible_become: yes
+        ansible_sudo_pass: 
